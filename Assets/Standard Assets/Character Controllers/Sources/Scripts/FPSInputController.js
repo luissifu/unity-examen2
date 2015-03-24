@@ -32,6 +32,16 @@ function Update () {
 	motor.inputJump = Input.GetButton("Jump");
 }
 
+function OnControllerColliderHit (hit : ControllerColliderHit) {
+	if (hit.gameObject.name == "Ball")
+	{
+		var spawner : GameObject = GameObject.Find("/Player/Camera/ObjectSpawner");
+		var pscript = spawner.GetComponent("Player");
+		pscript.has_ball = true;
+		Destroy(hit.gameObject);
+	}
+}
+
 // Require a character controller to be attached to the same game object
 @script RequireComponent (CharacterMotor)
 @script AddComponentMenu ("Character/FPS Input Controller")
