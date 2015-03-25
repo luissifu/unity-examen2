@@ -5,6 +5,7 @@ private var mouse_down : boolean;
 
 public var ball_pfb : Rigidbody;
 public var speed : int = 30;
+public var weapon : UI.Text;
 
 function Start () {
 	has_ball = false;
@@ -33,5 +34,14 @@ function Update () {
 	else
 	{
 		mouse_down = false;
+	}
+	
+	if (has_ball)
+	{
+		weapon.text = "Ball";
+	}
+	else
+	{
+		weapon.text = "Rocket";
 	}
 }

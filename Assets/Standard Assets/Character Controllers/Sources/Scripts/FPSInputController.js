@@ -33,7 +33,7 @@ function Update () {
 }
 
 function OnControllerColliderHit (hit : ControllerColliderHit) {
-	if (hit.gameObject.name == "Ball")
+	if (hit.gameObject.tag == "Ball")
 	{
 		var spawner : GameObject = GameObject.Find("/Player/Camera/ObjectSpawner");
 		var pscript = spawner.GetComponent("Player");
