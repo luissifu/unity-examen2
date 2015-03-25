@@ -2,11 +2,16 @@
 
 private var has_ball : boolean;
 private var mouse_down : boolean;
+
 private var rocket_launcher : GameObject;
 private var player_ball : GameObject;
 
+private var ball_speed : int = 20;
+public var rocket_speed : int = 40;
+
+public var rocket_pfb : Rigidbody;
 public var ball_pfb : Rigidbody;
-public var speed : int = 30;
+
 public var weapon : UI.Text;
 public var location : String = "/Player/Camera/";
 
@@ -25,13 +30,14 @@ function Update () {
 		{
 			if (has_ball)
 			{
-				var clone : Rigidbody = Instantiate(ball_pfb, transform.position, transform.rotation);
-				clone.velocity = transform.TransformDirection(Vector3(0,speed/2,speed));
+				var ball_clone : Rigidbody = Instantiate(ball_pfb, transform.position, transform.rotation);
+				ball_clone.velocity = transform.TransformDirection(Vector3(0,ball_speed/2,ball_speed));
 				has_ball = false;
 			}
 			else
 			{
-				//shoot rawkets
+				var rocket_clone : Rigidbody = Instantiate(rocket_pfb, transform.position, transform.rotation);
+				rocket_clone.velocity = transform.TransformDirection(Vector3(0,0,rocket_speed));
 			}
 			
 			mouse_down = true;

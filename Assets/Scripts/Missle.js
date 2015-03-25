@@ -2,8 +2,19 @@
 
 public var explosion : GameObject;
 
-function OnCollisionEnter (col : Collision) {
+function explode() {
 	Instantiate(explosion, transform.position, transform.rotation);
-	//Do more stuff
 	Destroy(this.gameObject);
+}
+
+function Update() {
+	if (transform.position.y < 0 || transform.position.y > 60)
+	{
+		explode();
+	}
+}
+
+function OnCollisionEnter (col : Collision) {
+	//Do more stuff
+	explode();
 }
