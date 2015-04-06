@@ -1,24 +1,14 @@
 ﻿#pragma strict
 
-//public var collided_with : String;
+private var neutral_start : Vector3;
 
 function Start () {
-
+	neutral_start = transform.position;
 }
 
 function Update () {
-
-}
-
-/*
-function OnCollisionEnter(collision : Collision) {
-	collided_with = collision.gameObject.tag;
-
-	if (collision.gameObject.tag == "Player")
+	if (transform.position.y < 0)
 	{
-		var pscript : Player = collision.gameObject.GetComponent(Player);
-		pscript.has_ball = true;
-		Destroy(this.gameObject);
+		transform.position = neutral_start;
 	}
 }
-*/
