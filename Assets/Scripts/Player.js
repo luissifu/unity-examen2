@@ -14,6 +14,7 @@ public var ball_pfb : Rigidbody;
 
 public var weapon : UI.Text;
 public var location : String = "/Player/Camera/";
+public var player_control : String;
 
 function Start () {
 	has_ball = false;
@@ -24,7 +25,7 @@ function Start () {
 }
 
 function Update () {
-	if (Input.GetButton("Fire1"))
+	if (Input.GetButton(player_control + "/Fire1"))
 	{
 		if (!mouse_down)
 		{
@@ -59,5 +60,14 @@ function Update () {
 		weapon.text = "Rocket";
 		player_ball.renderer.enabled = false;
 		rocket_launcher.renderer.enabled = true;
+	}
+}
+
+function drop_it() {
+	if (has_ball)
+	{
+		var ball_clone : Rigidbody = Instantiate(ball_pfb, transform.position, transform.rotation);
+		ball_clone.velocity = transform.TransformDirection(Vector3(0,ball_speed/2,ball_speed));
+		has_ball = false;
 	}
 }
