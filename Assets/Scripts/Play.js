@@ -12,6 +12,7 @@ function Update() {
 	if (health <= 0)
 	{
 		transform.position = start_pos;
+		drop_ball();
 		health = 1001;
 	}
 }

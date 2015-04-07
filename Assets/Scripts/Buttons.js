@@ -12,8 +12,15 @@ function on_click () {
 	{
 		Application.Quit();
 	}
+	else if (action == "Resume")
+	{
+		Time.timeScale = 1.0;
+		var pause_menu : GameObject = GameObject.Find("PauseMenu");
+		pause_menu.SetActive(false);
+	}
 	else
 	{
+		Time.timeScale = 1.0;
 		Application.LoadLevel(action);
 	}
 }

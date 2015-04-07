@@ -10,14 +10,18 @@ public var p2_health : UI.Text;
 public var p1 : GameObject;
 public var p2 : GameObject;
 
+public var pause_menu : GameObject;
+
+function Start() {
+	pause_menu.SetActive(false);
+}
+
 function Update () {
 	time_left -= Time.deltaTime;
 	
 	if (time_left < 30)
 	{
-		timer.color = Color.red;
-		
-		
+		timer.color = Color.red;		
 	}
 	if (time_left < 0)
 	{
@@ -39,6 +43,12 @@ function Update () {
 		var p2_h : int = p2.GetComponent(Play).health;
 		p2_health.text = "+" + Mathf.FloorToInt(p2_h / 10);
 	}
+	
+	if (Input.GetKeyDown(KeyCode.P))
+	{
+		Time.timeScale = 0;
+		pause_menu.SetActive(true);
+	}
 }
 
 function format_time (time : int) {
@@ -46,8 +56,6 @@ function format_time (time : int) {
 	{
 		var minutes = time / 60;
 		var seconds = time % 60;
-
-		
 
 		if (seconds >= 10)
 			return minutes + ":" + seconds;
