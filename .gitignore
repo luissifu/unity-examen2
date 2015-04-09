@@ -6,7 +6,13 @@
 [Bb]uild
 [Ll]ibrary/
 sysinfo.txt
- 
+
+# ====================== #
+# Build generated files 
+# ====================== #
+BBall_Data/
+/*.exe
+
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
